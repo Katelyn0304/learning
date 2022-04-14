@@ -3,4 +3,5 @@ function log(message) {
     console.log(message);
 }
 
+// export a function
 module.exports = log
