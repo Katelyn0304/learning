@@ -1,6 +1,4 @@
-console.log(__filename);
-
-function log(message) {
+function log1(message) {
     // Sent an http reguest
     console.log(message);
 }
@@ -9,8 +7,13 @@ function log2(name) {
     console.log("hi " + name);
 }
 
-// export two objects
-module.exports.loggg = log;
-module.exports.log22 = log2;
+function ili(name) {
+    console.log("我愛柔兒");
+}
 
-// Question: How to export an object which has multiple methods ?
+// export object with two methods
+module.exports.log = log1;
+
+console.log(typeof({log1}))
+
+// Question: How to export an object which has multiple methods ?    [OK]
