@@ -1,3 +1,3 @@
 const path = require("path");
-var pathobject = path.parse(__dirname);
+var pathobject = path.parse(__filename); //__dirname
 console.log(pathobject);
