@@ -12,8 +12,8 @@ function ili(name) {
 }
 
 // export object with two methods
-module.exports.log = log1;
+module.exports.log = {log1, log2};
 
-console.log(typeof({log1}))
+console.log(typeof({log1}));
 
 // Question: How to export an object which has multiple methods ?    [OK]
