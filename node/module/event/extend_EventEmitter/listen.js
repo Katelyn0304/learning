@@ -1,4 +1,4 @@
-const Logger = require('./logger');
+const Logger = require('./emit');
 const logger = new Logger();
 
 console.log(typeof(Logger));
