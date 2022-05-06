@@ -24,12 +24,11 @@ app.post('/api/courses', (req, res) => {
     });
 
     const { error, value } = schema.validate(req.body, schema);
-    const result = { error, value }
-    console.log(result);
+    console.log({ error, value });
 
-    if (result.error) {
+    if (error) {
         // 400 bad request
-        res.status(400).send(result.error);
+        res.status(400).send(error);
         return; // What does return mean ?
     }
 
