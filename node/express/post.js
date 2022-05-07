@@ -9,10 +9,6 @@ const courses = [
     { id: 3, name: 'course3' }
 ];
 
-app.get('/', (req, res) => {
-    res.send('Hello world');
-});
-
 app.get('/api/courses', (req, res) => {
     res.send(courses);
 });
@@ -20,7 +16,7 @@ app.get('/api/courses', (req, res) => {
 app.post('/api/courses', (req, res) => {
     const course = {
         id: courses.length + 1,
-        name: req.body.abc // abc corresponds to what I type in postman => "bla": "new course"
+        name: req.body.name // the latter name corresponds to what I type in postman => "name": "new course"
     };
     courses.push(course);
     res.send(course); // and it will return id: number, name: new course

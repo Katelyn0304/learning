@@ -10,10 +10,6 @@ const courses = [
     { id: 3, name: 'course3' }
 ];
 
-app.get('/', (req, res) => {
-    res.send('Hello world');
-});
-
 app.get('/api/courses', (req, res) => {
     res.send(courses);
 });
@@ -26,11 +22,7 @@ app.post('/api/courses', (req, res) => {
     const { value, error } = schema.validate({name: req.body.name});
     console.log({ value, error });
 
-    if (error) {
-        // 400 bad request
-        res.status(400).send(error.details[0].message);
-        return; // What does return mean ?
-    }
+    if (error) return res.status(400).send(error.details[0].message); //status 400 means bad request, and what does return mean ?
 
     const course = {
         id: courses.length + 1,

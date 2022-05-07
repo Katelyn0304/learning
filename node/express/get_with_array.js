@@ -13,9 +13,10 @@ app.get('/api/courses', (req, res) => {
 
 // When tou want to get the specific value in an array, use arrayname.find
 app.get('/api/courses/:id',(req, res) => {
-    const course = courses.find(c => c.id === parseInt(req.params.id)); // parseTnt() in javascript = int() in python
-    if (!course) res.status(404).send('The course with the given ID was not found.');
+    const course = courses.find(c => c.id === parseInt(req.params.id)); // req.params.id is a string, parseTnt() in javascript = int() in python
+    if (!course) return res.status(404).send('The course with the given ID was not found.');
     res.send(course); // Is here need else ?
+    // console.log(typeof(req.params.id));
 });
 
 app.listen(3000, () => console.log('Listening on port 3000...'));
