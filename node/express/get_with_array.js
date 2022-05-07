@@ -7,10 +7,6 @@ const courses = [
     { id: 3, name: 'course3' }
 ];
 
-app.get('/', (req, res) => {
-    res.send('Hello world');
-});
-
 app.get('/api/courses', (req, res) => {
     res.send(courses);
 });
