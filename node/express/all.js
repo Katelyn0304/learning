@@ -32,10 +32,13 @@ app.post('/api/courses', (req, res) => {
 
     if (error) return res.status(400).send(error.details[0].message);
 
+    const a = courses[courses.length - 1];
+
     const course = {
-        id: courses.length + 1,
+        id: a.id + 1,
         name: req.body.name
     };
+
     courses.push(course);
     res.send(course);
 });
