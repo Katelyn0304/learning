@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles\table.css">
+        <title>table</title>
+    </head>
+    <body>
+        <table class="t1">
+            <caption>name of the table</caption>
+            <tr>
+                <td>one</td>
+                <td>two</td>
+                <td>three</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table class="t2">
+            <tr>
+                <th>one</th>
+                <th>two</th>
+                <th>three</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table class="t3">
+            <tr>
+                <td></td>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            </tr>
+            <tr>
+                <th>money</th>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <th>sum</th>
+                <td colspan = "3">600</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table class="t4">
+            <tr>
+                <td></td>
+                <th>money</th>
+                <th>sum</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td>100</td>
+                <td rowspan = "3">600</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>200</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>300</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table class="t5">
+            <thead>
+                <tr>
+                    <td></td>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>money</th>
+                    <td>100</td>
+                    <td>200</td>
+                    <td>300</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>sum</th>
+                    <td colspan = "3">600</td>
+                </tr>
+            </tfoot>
+        </table>
+        <br>
+        <br>
+        <table class="t6">
+            <colgroup>
+                <col span = "2" style = "background-color: aquamarine;">
+                <col span = "1" style = "background-color: blueviolet;">
+            </colgroup>
+            <colgroup span = "1" style = "background-color: bisque;"></colgroup>
+            <tr>
+                <td></td>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+            </tr>
+            <tr>
+                <th>money</th>
+                <td>100</td>
+                <td>200</td>
+                <td>300</td>
+            </tr>
+            <tr>
+                <th>quantity</th>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+        </table>
+    </body>
+</html>

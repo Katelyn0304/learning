@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>form</title>
+    </head>
+    <body>
+        <form>
+            <p>Q1. Who are you?</p>
+            <label>Answer:
+                <input name = "name" placeholder = "please input your name">
+                <input type = "submit" value = "submit">
+            </label>
+            <p>Q2. Your gender</p>
+            <input type = "radio" value = "boy" name = "gender"><label>boy</label><br>
+            <input type = "radio" value = "girl" name = "gender"><label>girl</label>
+            <p>Q3. How old are you?</p>
+            <label>Answer:</label><input type = "number" min = "0" name = "age"><br>
+            <p>Q4. Do you like Katelyn?</p>
+            <input type = "checkbox"><label>Yes!</label>
+            <p>Q5. When do Arfiligol and Katelyn be together?</p>
+            <label>Answer:</label><input type = "date">
+            <p>Q6. I don't know what to ask...just type something</p>
+            <input type = "password" required>
+            <p>Don't ask me why. Just press the cat!</p>
+            <input type = "image" src = "..\katelyn_pictures\cat.png" width = "500" height = "300">
+            <p>I am the reset bottom. Don't press me.</p>
+            <input type = "reset" value = "reset">
+            <p>Q7. Do you want to upload some files? (NO)</p>
+            <input type = "file">
+            <p>Q8. Are there any love words for Katelyn?</p>
+            <textarea rows = "5" cols = "30">love you love you love you love you...(I help you type ready!)</textarea>
+            <p>Q9. Which do you like the most?</p>
+            <select>
+                <option>cat</option>
+                <option selected>dog</option>
+                <option>Katelyn</option>
+            </select>
+            <p>Q10. What do you like?</p>
+            <select size = "6" multiple>
+                <option>ramen</option>
+                <option selected>Katelyn</option>
+                <option>walk</option>
+                <option>sleep</option>
+                <option>wet</option>
+                <option disabled>other pretty girls' opais</option>
+            </select>
+            <hr>
+            <p>ignore this</p>
+            <select size = "6">
+                <optgroup label = "Country">
+                    <option>Taiwan</option>
+                    <option>Japan</option>
+                </optgroup>
+                <optgroup label = "City">
+                    <option>Taipei</option>
+                    <option>Tokyo</option>
+                </optgroup>
+            </select>
+            <fieldset>
+                <legend>test</legend>
+                <label>aaa</label><input>
+                <label>bbb</label><input>
+            </fieldset>
+            <label>test</label><input list = "test">
+            <datalist id = "test">
+                <option>aaa</option>
+                <option>bbb</option>
+                <option>ccc</option>
+                <option>ddd</option>
+            </datalist>
+        </form>
+    </body>
+</html>
