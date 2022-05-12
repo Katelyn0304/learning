@@ -31,7 +31,7 @@ app.post('/api/courses', (req, res) => {
 
     if (error) return res.status(400).send(error.details[0].message);
 
-    const a = courses[courses.length - 1];
+    const a = courses[courses.length - 1]; // the last object in array
 
     const course = {
         id: a.id + 1,
