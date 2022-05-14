@@ -8,6 +8,9 @@ const dbDebugger = require('debug')('app:db');
 const logger = require('./middleware/logger');
 const authenticate = require('./middleware/authenticate');
 
+app.set('view engine', 'pug');
+app.set('views', './views'); // default
+
 // Middleware function
 // Speaking of middleware function, there are two middleware functions we had already seen.
 // One is app.use(express.json()), and the other is (req, res) =>
