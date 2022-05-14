@@ -2,17 +2,9 @@ const express = require("express");
 const app = express();
 const helmet = require('helmet');
 const morgan = require('morgan');
+const config = require('config');
 const logger = require('./middleware/logger');
 const authenticate = require('./middleware/authenticate');
-
-// Environment
-console.log(`NODE_ENV: ${process.env.NODE_ENV}`); // this will stand undefined if we don't set the environment
-console.log(`app: ${app.get('env')}`); // this will return development by defult
-
-if (app.get('env') === 'development') {
-    app.use(morgan('tiny'));
-    console.log('Morgan enabled...'); // if we set NODE_ENV=production, it won't log on console.
-}
 
 // Middleware function
 // Speaking of middleware function, there are two middleware functions we had already seen.
@@ -26,6 +18,21 @@ app.use(morgan('tiny'));
 
 app.use(logger);
 app.use(authenticate);
+
+// Environment
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`); // this will stand undefined if we don't set the environment
+console.log(`app: ${app.get('env')}`); // this will return development by defult
+
+if (app.get('env') === 'development') {
+    app.use(morgan('tiny'));
+    console.log('Morgan enabled...'); // if we set NODE_ENV=production, it won't log on console.
+}
+
+//Configuration
+// if we set NODE_ENV=production, it will change to production.json file
+console.log('Application name: ' + config.get('name'));
+console.log('Mail Server: ' + config.get('mail.host'));
+console.log('Mail Password: ' + config.get('mail.password')); // set app_password=1234 at first
 
 const courses = [
     { id: 1, name: 'course1' },
