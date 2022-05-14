@@ -3,6 +3,8 @@ const app = express();
 const helmet = require('helmet');
 const morgan = require('morgan');
 const config = require('config');
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
 const logger = require('./middleware/logger');
 const authenticate = require('./middleware/authenticate');
 
@@ -33,6 +35,14 @@ if (app.get('env') === 'development') {
 console.log('Application name: ' + config.get('name'));
 console.log('Mail Server: ' + config.get('mail.host'));
 console.log('Mail Password: ' + config.get('mail.password')); // set app_password=1234 at first
+
+// Debug
+if (app.get('env') === 'development') {
+    app.use(morgan('tiny'));
+    startupDebugger('Morgan enabled...');
+}
+
+dbDebugger('Connected to the database...');
 
 const courses = [
     { id: 1, name: 'course1' },
