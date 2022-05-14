@@ -37,6 +37,7 @@ console.log('Mail Server: ' + config.get('mail.host'));
 console.log('Mail Password: ' + config.get('mail.password')); // set app_password=1234 at first
 
 // Debug
+// set DEBUG=app:startup/db/* and run code
 if (app.get('env') === 'development') {
     app.use(morgan('tiny'));
     startupDebugger('Morgan enabled...');
