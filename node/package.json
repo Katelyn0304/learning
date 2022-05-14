@@ -13,6 +13,7 @@
     "express": "^4.18.1",
     "helmet": "^5.0.2",
     "joi": "^17.6.0",
+    "morgan": "^1.10.0",
     "underscore": "^1.13.3"
   },
   "devDependencies": {
