@@ -29,15 +29,26 @@ app.post('/api/courses', (req, res) => {
 
     const { value, error } = schema.validate({name: req.body.name});
 
-    if (error) return res.status(400).send(error.details[0].message);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
 
-    const a = courses[courses.length - 1]; // the last object in array
+    } else {
 
-    const course = {
-        id: a.id + 1,
-        name: req.body.name
-    };
+        if (courses.length == 0) {
+            var course = {
+                id: 1,
+                name: req.body.name
+            };
 
+        } else {
+            const a = courses[courses.length - 1]; // the last object in array
+            var course = {
+                id: a.id + 1,
+                name: req.body.name
+            };
+        }
+
+    }
     courses.push(course);
     res.send(course);
 });
