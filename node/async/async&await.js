@@ -6,7 +6,7 @@ async function displayCommits() {
         console.log(commits);
     }
     catch (err) {
-        console.log('Error', err.message)
+        console.log('Error', err.message);
     }
 }
 displayCommits();
