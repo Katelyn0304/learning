@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+}
+/* display，上下左右置中，設定寬、高度，背景顏色
+每個物件都按照這個順序，看起來會比較順~ (我自己是覺得這個順序比較符合要設定的邏輯，所以這樣排，有更好的想法在跟我說~ */
+.nb {
+    display: flex;
+    justify-content: space-between;
+    height: 65.5px;
+
+    background-color: rgb(148, 65, 168);
+}
+/* 先設定物件大小，再決定位置，順序才不會亂掉
+大小通常由最底層核心物件決定，此nbl由底部nbm決定，所以width設auto，但height為了維持同為65.5px，設為65.5px */
+.nbl {
+    display: flex;
+    height: 65.5px;
+    width: auto;
+}
+/* 每一個object都盡量讓它display: flex屬性，如果display: flex會怪怪的，應該是設定上的問題，邏輯錯誤等等，先解決先後順序(例如先大小)
+再來更改是否為flex屬性 */
+.nbm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100px;
+    /* 設定完object外部特性再設定內部特性，抓bug時比較方便閱覽 */
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+.nbr {
+    display: flex;
+    justify-content: flex-end;
+    height: 65.5px;
+
+    background-color: rgb(148, 65, 168);
+}
+
+a.nbb {
+    height: 100%;
+    width: 135px;
+
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    line-height: 65.5px;
+}
+
+#login {
+    width: 90px;
+}
+/* hover要放在最下面，#login應該在hover上方才不會臨時又被蓋掉 */
+a.nbb:hover, a.nbm:hover{
+    background-color: rgb(133, 42, 156);
+}
+
+@media screen and (min-width: 650px){
+
+    div.dropdown {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 650px){
+
+    /* div.nb {
+        display: flex;
+        justify-content: flex-end;
+    } */
+
+    div.nbr {
+        display: none;
+    }
+    
+    /* 這行我不太知道在幹嘛，但我把它註解掉顯示可以正常 */
+    /* div.nbl {
+        position: absolute;
+        left: 0;
+    } */
+
+    .dropdown {
+        display: flexbox;
+        height: 65.5px;
+        width: 65px;
+        position: relative;
+    }
+
+    .dropbtn {
+        /* 特殊需求，display: inline-block */
+        display: flexbox;
+        height: 100%;
+        width: 100%;
+        
+        font-size: 30px;
+        color: white;
+        background-color: rgb(148, 65, 168);
+        border: none;
+        cursor: pointer;
+    }
+
+    /* .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9c7;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+        z-index: 1;
+        right: 0;
+    } */
+    
+    .dropdown-content {
+        display: none;
+        height: auto;
+        width: auto;
+        position: absolute;
+        right: 0;
+        
+        background-color: rgb(148, 65, 168);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    }
+
+    .dropdown-content a {
+        display: flex;
+        height: 70px;
+        width: 150px;
+        
+        text-align: center;
+        line-height: 70px;
+        font-size: 22px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: rgb(133, 42, 156);
+    }
+
+    .dropdown:hover .dropdown-content, .dropdown:hover .dropdown-content a {
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgb(133, 42, 156);
+    }
+}

@@ -1,0 +1,18 @@
+p.welcome {
+    font-size: 7vw;
+    line-height: 13vw;
+    padding: 0;
+    margin: 0.5vw;
+}
+
+html, body {
+    height: 95%;
+}
+
+div.welcome {
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
