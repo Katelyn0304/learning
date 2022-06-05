@@ -18,12 +18,18 @@ notifyCustomer();
 function getCustomer(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve({ 
-                id: id, 
-                name: 'Mosh Hamedani', 
-                isGold: true, 
-                email: 'email' 
-            });
+            try{
+                throw new Error('Can not connect to the database...');
+                resolve({ 
+                    id: id, 
+                    name: 'Mosh Hamedani', 
+                    isGold: true, 
+                    email: 'email' 
+                });
+            }
+            catch (err) {
+                reject('Error: ', err.message);
+            }
         }, 4000); 
     }); 
 }
