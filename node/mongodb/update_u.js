@@ -14,18 +14,18 @@ const courseSchema = new mongoose.Schema({
 
 const Course = mongoose.model('Course', courseSchema);
 
-async function getCourses() {
-    const pageNumber = 2;
-    const pageSize = 10;
+async function updateFirst(id) {
+    // { _id: id } -> { isPublished: false }
+    const result = await Course.update({ _id: id }, {
+        $set: {
+            author: 'Mosh',
+            isPublished: false
+        }
+    });
 
-    const courses = await Course
-        .find({ author: 'Mosh', isPublished: true})
-        .skip((pageNumber - 1) * pageSize)
-        .limit(pageSize)
-        .sort({ name: 1})
-        .select({ name: 1, tags: 1})
+    console.log(result);
 
-    console.log(courses);
+    // if want to get the updated document, replace update with findByIdAndUpdate and add third object { new: true }
 }
 
-getCourses();
+updateFirst('629c8420e76f3ef5897ae7cd');

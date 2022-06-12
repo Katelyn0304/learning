@@ -4,16 +4,16 @@ mongoose.connect('mongodb://localhost/exercise')
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.error('Could not connect to MongoDB...', err));
 
-    const courseSchema = new mongoose.Schema({
-        _id: String,
-        tags: [ String ],
-        date: Date,
-        name: String,
-        author: String,
-        isPublished: Boolean,
-        price: Number,
-        __v: Number
-    });
+const courseSchema = new mongoose.Schema({
+    _id: String,
+    tags: [ String ],
+    date: Date,
+    name: String,
+    author: String,
+    isPublished: Boolean,
+    price: Number,
+    __v: Number
+});
 
 const Course = mongoose.model('Course', courseSchema);
 

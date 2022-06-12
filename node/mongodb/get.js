@@ -1,32 +1,28 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/exercise')
+mongoose.connect('mongodb://localhost/playground')
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.error('Could not connect to MongoDB...', err));
 
 const courseSchema = new mongoose.Schema({
-    _id: String,
-    tags: [ String ],
-    date: Date,
     name: String,
     author: String,
-    isPublished: Boolean,
-    price: Number,
-    __v: Number
+    tags: [ String ],
+    date: { type: Date, default: Date.now },
+    isPublished: Boolean
 });
 
 const Course = mongoose.model('Course', courseSchema);
 
 async function getCourses() {
-    return await Course
-        .find({ tags: 'backend', isPublished: true })
+    const courses = await Course
+        .find({ author: 'Mosh', isPublished: true })
+        .limit(10)
         .sort({ name: 1 })
-        .select({ name: 1, author: 1 });
-}
+        .select({ name: 1, tags: 1 })
+        // .count(); get the number of documents
 
-async function run(){
-    const courses = await getCourses();
     console.log(courses);
 }
 
-run();
+getCourses();

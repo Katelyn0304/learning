@@ -14,18 +14,6 @@ const courseSchema = new mongoose.Schema({
 
 const Course = mongoose.model('Course', courseSchema);
 
-async function createCourse() {
-    const course = new Course({
-        name: 'Angular Course',
-        author: 'Mosh',
-        tags: ['angular', 'frontend'],
-        isPublished: true
-    });
-    
-    const result = await course.save();
-    console.log(result);
-}
-
 async function getCourses() {
     // eq (equal to)
     // ne (not equal)
@@ -41,25 +29,9 @@ async function getCourses() {
         // .find({ price: { $gte:10, $lte:20 } })
         // .find({ price: { $in: [10, 15, 20] } })
 
-        .find({ author: 'Mosh', isPublished: true })
-        .limit(10)
+        .find({ price: 10 })
         .sort({ name: 1 })
         .select({ name: 1, tags: 1 })
-        // .count();
-
-        // and or object
-        // .find()
-        // .or([ { author: 'Mosh' }, { isPublished: true } ])
-        // .and([])
-
-        // Starts with Mosh
-        // .find({ author: /^Mosh/ })
-
-        // Ends with Hamedani
-        // .find({ author:  /Hamedani$/i }) // i makes it insensitive
-
-        // Contains Mosh
-        // .find({ author: /.*Mosh.*/i })
 
     console.log(courses);
 }

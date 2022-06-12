@@ -14,18 +14,11 @@ const courseSchema = new mongoose.Schema({
 
 const Course = mongoose.model('Course', courseSchema);
 
-async function getCourses() {
-    const pageNumber = 2;
-    const pageSize = 10;
-
-    const courses = await Course
-        .find({ author: 'Mosh', isPublished: true})
-        .skip((pageNumber - 1) * pageSize)
-        .limit(pageSize)
-        .sort({ name: 1})
-        .select({ name: 1, tags: 1})
-
-    console.log(courses);
+async function removeCourse(id) {
+    const result = await Course.deleteOne({ _id: id });
+    // const result = await Course.deleteMany({ isPublished: false });
+    console.log(result);
+    // const course = await Course.findByIdAndRemove(id); check the document after deleted
 }
 
-getCourses();
+removeCourse('629c83a9d4d2fadf4199504a');
