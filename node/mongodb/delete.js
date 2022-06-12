@@ -21,4 +21,4 @@ async function removeCourse(id) {
     // const course = await Course.findByIdAndRemove(id); check the document after deleted
 }
 
-removeCourse('629c83a9d4d2fadf4199504a');
+removeCourse('62a62c922e1d6a8f76afa25c');
