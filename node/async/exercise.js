@@ -19,7 +19,7 @@ function getCustomer(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             try{
-                throw new Error('Can not connect to the database...');
+                throw Error(': Can not connect to the database...');
                 resolve({ 
                     id: id, 
                     name: 'Mosh Hamedani', 
@@ -28,7 +28,7 @@ function getCustomer(id) {
                 });
             }
             catch (err) {
-                reject('Error: ', err.message);
+                reject(new Error(err.message));
             }
         }, 4000); 
     }); 
