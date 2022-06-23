@@ -10,7 +10,7 @@ const Movie = mongoose.model('Movies', new mongoose.Schema({
     minlength: 5,
     maxlength: 255
   },
-  genre: { // This is what we store in database -> genreSchema
+  genre: { 
     type: genreSchema,  
     required: true
   },
@@ -31,7 +31,7 @@ const Movie = mongoose.model('Movies', new mongoose.Schema({
 function validateMovie(movie) {
   const schema = {
     title: Joi.string().min(5).max(50).required(),
-    genreId: Joi.string().required(), // This is what customers send to us -> genreId
+    genreId: Joi.string().required(),
     numberInStock: Joi.number().min(0).required(),
     dailyRentalRate: Joi.number().min(0).required()
   };
