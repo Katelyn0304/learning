@@ -1,4 +1,4 @@
-const {Movie, validate} = require('../models/movie'); 
+const {Movie, schema} = require('../models/movie'); 
 const {Genre} = require('../models/genre');
 const mongoose = require('mongoose');
 const express = require('express');
@@ -10,7 +10,12 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { error } = validate(req.body); 
+  const { value, error } = schema.validate({
+    title: req.body.title,
+    genreId: req.body.genreId,
+    numberInStock: req.body.numberInStock,
+    dailyRentalRate: req.body.dailyRentalRate
+  }); 
   if (error) return res.status(400).send(error.details[0].message);
 
   const genre = await Genre.findById(req.body.genreId);
@@ -31,7 +36,12 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/:id', async (req, res) => {
-  const { error } = validate(req.body); 
+  const { value, error } = schema.validate({
+    title: req.body.title,
+    genreId: req.body.genreId,
+    numberInStock: req.body.numberInStock,
+    dailyRentalRate: req.body.dailyRentalRate
+  }); 
   if (error) return res.status(400).send(error.details[0].message);
 
   const genre = await Genre.findById(req.body.genreId);

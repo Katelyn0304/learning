@@ -1,4 +1,4 @@
-const {Rental, validate} = require('../models/rental'); 
+const {Rental, schema} = require('../models/rental'); 
 const {Movie} = require('../models/movie'); 
 const {Customer} = require('../models/customer'); 
 const mongoose = require('mongoose');
@@ -12,7 +12,10 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { error } = validate(req.body); 
+  const { value, error } = schema.validate({
+    customerId: req.body.customerId,
+    movieId: req.body.movieId
+  }); 
   if (error) return res.status(400).send(error.details[0].message);
 
   const customer = await Customer.findById(req.body.customerId);
