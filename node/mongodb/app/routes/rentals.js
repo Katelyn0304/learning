@@ -6,10 +6,7 @@ const Fawn = require('fawn');
 const express = require('express');
 const router = express.Router();
 
-mongoose.connect('mongodb://localhost/vidly')
-  .then(() => console.log('Connected to MongoDB...'))
-  .catch(err => console.error('Could not connect to MongoDB...'));
-Fawn.init(mongoose);
+// Fawn.init(mongoose);
 
 router.get('/', async (req, res) => {
   const rentals = await Rental.find().sort('-dateOut');
@@ -45,13 +42,18 @@ router.post('/', async (req, res) => {
   });
 
   try{
-    const task = Fawn.Task();
+    /*const task = Fawn.Task();
     task.save('rentals', rental)
       .update('movies', { _id: movie._id }, {
         $inc: { numberInStock: -1 }
       })
       .run();
     
+    res.send(rental);*/
+
+    rental = await rental.save();
+    movie.numberInStock--;
+    movie.save();
     res.send(rental);
   }
   catch(ex) {
