@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const userSchema = new mongoose.Schema({
     id_number: {
@@ -20,7 +22,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     phone: {
-        type: Number,
+        type: String,
         required: true
     },
     code_name: {
@@ -44,7 +46,7 @@ const schema = Joi.object({
     name: Joi.string().required(),
     birth: Joi.date().required(),
     email: Joi.string().email().required(),
-    phone: Joi.number().required(),
+    phone: Joi.string().required(),
     code_name: Joi.string().required(),
     level: Joi.number().required(),
     password: Joi.string().required()

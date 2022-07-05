@@ -5,7 +5,13 @@ const router = express.Router();
 const _ = require('lodash');
 
 router.post('/', async (req, res) => {
-    const { error } = schema.validate(_.pick(req.body, ['company_number', 'name', 'cause', 'against', 'userId']));
+    const { error } = schema.validate(_.pick(req.body, [
+        'company_number',
+        'name',
+        'cause',
+        'against',
+        'userId'
+    ]));
     if (error) return res.status(400).send(error.details[0].message);
 
     const user = await User.findById(req.body.userId);
@@ -21,7 +27,9 @@ router.post('/', async (req, res) => {
             code_name: user.code_name
         }
     });
+
     await company.save();
+    
     res.send(company);
   });
 
