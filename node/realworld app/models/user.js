@@ -19,25 +19,36 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     phone: {
         type: String,
         required: true
     },
     code_name: {
+        type: String
+    },
+    password: {
         type: String,
         required: true
     },
     level: {
         type: Number,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
+        required: true,
+        min: 1,
+        max: 4,
+        validate: {
+            validator: Number.isInteger,
+            message: '{VALUE} is not an integer value'
+        }
     }
 });
+
+userSchema.methods.generateAuthToken = function() {
+    const token = jwt.sign({ _id: this._id, level: this.level }, config.get('jwtPrivateKey'));
+    return token;
+}
 
 const User = mongoose.model('User', userSchema);
 
@@ -48,8 +59,8 @@ const schema = Joi.object({
     email: Joi.string().email().required(),
     phone: Joi.string().required(),
     code_name: Joi.string().required(),
-    level: Joi.number().required(),
-    password: Joi.string().required()
+    password: Joi.string().required(),
+    level: Joi.number().integer().required().min(1).max(3)
 });
 
 exports.User = User;

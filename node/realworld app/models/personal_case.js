@@ -22,14 +22,29 @@ const personSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    user: {
-        type: new mongoose.Schema({
-            code_name: {
-                type: String,
-                required: true
-            }
-        }),
-        require: true
+    lawyer: [{
+        _id: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        code_name: {
+            type: String,
+            required: true
+        }
+    }],
+    created_by: {
+        _id: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        }
     }
 });
 
@@ -41,7 +56,7 @@ const schema = Joi.object({
     birth: Joi.date().required(),
     cause: Joi.string().required(),
     against: Joi.string().required(),
-    userId: Joi.objectId().required()
+    lawyer: Joi.array().required()
 });
 
 exports.Person = Personal_case;
