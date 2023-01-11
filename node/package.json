@@ -15,6 +15,7 @@
     "debug": "^4.3.4",
     "delay": "^5.0.0",
     "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
     "fawn": "^2.1.5",
     "form-data": "^4.0.0",
     "helmet": "^5.0.2",
@@ -27,7 +28,9 @@
     "nodemon": "^2.0.18",
     "pug": "^3.0.2",
     "request": "^2.88.2",
-    "underscore": "^1.13.3"
+    "underscore": "^1.13.3",
+    "winston": "^3.8.1",
+    "winston-mongodb": "^5.0.7"
   },
   "devDependencies": {
     "jshint": "^2.13.4"
