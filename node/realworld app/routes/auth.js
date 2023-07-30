@@ -7,6 +7,7 @@ const Joi = require('joi')
 const router = express.Router();
 
 router.post('/', async (req, res) => {
+    throw new Error('Could not authenticate.');
     const { error } = schema.validate(_.pick(req.body, ['email', 'password']));
     if (error) return res.status(400).send(error.details[0].message);
     

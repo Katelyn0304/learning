@@ -1,3 +1,5 @@
+const winston = require('winston');
+require('winston-mongodb');
 require('express-async-errors');
 const error = require('./middleware/error');
 const mongoose = require('mongoose');
@@ -8,6 +10,24 @@ const auth = require('./routes/auth');
 const express = require('express');
 const config = require('config');
 const app = express();
+
+process.on('uncaughtException', (ex) => {
+  winston.error(ex.message, ex);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (ex) => {
+  winston.error(ex.message, ex);
+  process.exit(1);
+});
+
+const p = Promise.reject(new Error('Something failed miserably!'));
+p.then(() => console.log('Done'));
+
+winston.add(new winston.transports.File({ filename: 'logfile.log' }));
+winston.add(new winston.transports.MongoDB({ db: 'mongodb://localhost/app' }));
+
+throw new Error('Something failed during startup.');
 
 if (!config.get('jwtPrivateKey')) {
   console.error('FATAL ERROR: jwtPrivateKey is not defined.');
